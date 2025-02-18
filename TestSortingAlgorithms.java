@@ -1,13 +1,20 @@
 public class TestSortingAlgorithms {
 
-    public boolean checkSort(int[] arr, SortAlg alg){
-        System.out.println(arr);
+    public static void printArray(int[] arr){
+        String str = "";
+        for (int i : arr) {
+            str = str+i;
+        }
+        System.out.println(str);
+    }
 
+    public static boolean checkSort(int[] arr, SortAlg alg){
+        printArray(arr);
         arr = alg.sort(arr);
 
         // add cutoff to stop long runs
 
-        System.out.println(arr);
+        printArray(arr);
 
         int length = arr.length;
 
@@ -19,5 +26,10 @@ public class TestSortingAlgorithms {
         }
         System.out.println("sorted");
         return true;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {2,5,3,1,4};
+        checkSort(arr, new SelectionSort());
     }
 }
