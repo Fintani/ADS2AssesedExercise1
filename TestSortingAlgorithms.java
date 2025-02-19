@@ -3,7 +3,7 @@ public class TestSortingAlgorithms {
     public static void printArray(int[] arr){
         String str = "";
         for (int i : arr) {
-            str = str+i;
+            str = str+i+",";
         }
         System.out.println(str);
     }
@@ -29,7 +29,7 @@ public class TestSortingAlgorithms {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,5,3,1,4};
-        checkSort(arr, new MergeSort());
+        int[] arr = {2,5,3,1,4,0,6,9,11,10,7,8,13,12};
+        checkSort(arr, new BottomUpMerge());
     }
 }

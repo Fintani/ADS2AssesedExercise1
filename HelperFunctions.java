@@ -22,26 +22,24 @@ public class HelperFunctions {
     }
 
     public static void merge(int start, int mid, int end, int[] arr){
-        int n = mid-start+1;
+        int n = mid+1-start;
         int m = end-mid;
 
-        int[] lArray = new int[n+1];
-        for(int i=start;i<=mid;i++){
-            lArray[i-start] = arr[i];
+        int[] lArray = new int[n];
+        for(int i=0;i<n;++i){
+            lArray[i] = arr[i+start];
         }
-
-        int[] rArray = new int[m+1];
         
-        for(int i=mid+1;i<=end;i++){
-            rArray[i-(mid+1)] = arr[i];
+        int[] rArray = new int[m];
+        
+        for(int j=0;j<m;++j){
+            rArray[j] = arr[j+mid+1];
         }
-        lArray[n] = Integer.MAX_VALUE;
-        rArray[m] = Integer.MAX_VALUE;
 
         int i = 0;
         int j = 0;
-
-        for(int k=start;k<end;k++){
+        int k = start;
+        while(i<n && j<m){
             if(lArray[i]<=rArray[j]){
                 arr[k] = lArray[i];
                 i = i+1;
@@ -49,6 +47,19 @@ public class HelperFunctions {
                 arr[k] = rArray[j];
                 j = j+1;
             }
+            k=k+1;
+        }
+
+        while(i<n){
+            arr[k] = lArray[i];
+            k = k+1;
+            i = i+1;
+        }
+
+        while(j<m){
+            arr[k] = rArray[j];
+            k = k+1;
+            j = j+1;
         }
     }
 }

@@ -1,20 +1,24 @@
 public class InsertionSort implements SortAlg {
 
     public int[] sort(int[] arr){
-        int length = arr.length;
+        int start = 0;
+        int end = arr.length-1;
+        insertionSort(start, end, arr);
+        return arr;
+    }
 
-        for(int i=1; i<length; i++){
+    public void insertionSort(int start, int end, int[] arr){
+
+        for(int i=start+1; i<=end; i++){
             int key = arr[i];
             int j = i-1;
 
-            while(j>=0 && arr[j]>key){
+            while(j>=start && arr[j]>key){
                 arr[j+1] = arr[j];
                 j = j-1;
             }
 
             arr[j+1] = key;
         }
-
-        return arr;
     }
 }
