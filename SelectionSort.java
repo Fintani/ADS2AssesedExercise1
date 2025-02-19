@@ -5,7 +5,7 @@ public class SelectionSort implements SortAlg{
 
         for(int i=0; i<length-1; i++){
             int minIndex = findMin(i+1, length, arr, i);
-            swap(i, minIndex, arr);
+            HelperFunctions.swap(i, minIndex, arr);
         }
 
         return arr;
@@ -19,11 +19,5 @@ public class SelectionSort implements SortAlg{
         }
 
         return minIndex;
-    }
-
-    public void swap(int index1, int index2, int[] arr){
-        int holder = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = holder;
     }
 }
