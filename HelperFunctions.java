@@ -7,11 +7,11 @@ public class HelperFunctions {
     }
 
     public static int partition(int start, int end, int[] arr){
-        int endElement = arr[end];
+        int pivot = arr[end];
         int i = start-1;
 
         for(int j=start;j<end;j++){
-            if(arr[j] <= endElement){
+            if(arr[j] <= pivot){
                 i = i+1;
                 swap(i, j, arr);
             }

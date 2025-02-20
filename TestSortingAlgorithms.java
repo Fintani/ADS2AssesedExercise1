@@ -29,7 +29,7 @@ public class TestSortingAlgorithms {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,5,3,1,4,0,6,9,11,10,7,8,13,12};
-        checkSort(arr, new BottomUpMerge());
+        int[] arr = {1,4,6,2,3,3,0,4,3,1,3};
+        checkSort(arr, new DutchFlagQuick());
     }
 }
