@@ -1,4 +1,4 @@
-public class QuickInsertionSort implements SortAlg{
+public class QuickInsertionSort extends QuickSuper{
     
     public int[] sort(int[] arr){
         int start = 0;
@@ -11,7 +11,8 @@ public class QuickInsertionSort implements SortAlg{
 
     public void quickSort(int start, int end, int[] arr){
         if(start<end && (end-start+1)>11){
-            int part = HelperFunctions.partition(start, end, arr);
+            int pivot = arr[end];
+            int part = partition(pivot, start, end, arr);
             quickSort(start, part-1, arr);
             quickSort(part+1, end, arr);
         } else {

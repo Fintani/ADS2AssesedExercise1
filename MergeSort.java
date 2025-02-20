@@ -1,4 +1,4 @@
-public class MergeSort implements SortAlg{
+public class MergeSort extends MergeSuper{
 
     public int[] sort(int[] arr){
         int start = 0;
@@ -10,12 +10,12 @@ public class MergeSort implements SortAlg{
         return arr;
     }
 
-    public static void mergeSort(int start, int end, int[] arr){
+    public void mergeSort(int start, int end, int[] arr){
         if(start<end){
             int mid = (start+end)/2;
             mergeSort(start, mid, arr);
             mergeSort(mid+1, end, arr);
-            HelperFunctions.merge(start, mid, end, arr);
+            merge(start, mid, end, arr);
         }
     }
 }

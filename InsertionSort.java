@@ -1,4 +1,4 @@
-public class InsertionSort implements SortAlg {
+public class InsertionSort extends SortAlg {
 
     public int[] sort(int[] arr){
         int start = 0;

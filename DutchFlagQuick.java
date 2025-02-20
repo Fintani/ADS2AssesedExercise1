@@ -1,4 +1,4 @@
-public class DutchFlagQuick implements SortAlg{
+public class DutchFlagQuick extends SortAlg{
     int partStart;
     int partEnd;
     
@@ -28,16 +28,16 @@ public class DutchFlagQuick implements SortAlg{
             if(arr[j] < pivot){
                 i = i+1;
                 mid = mid+1;
-                HelperFunctions.swap(i, mid, arr);
-                HelperFunctions.swap(i, j, arr);
+                swap(i, mid, arr);
+                swap(i, j, arr);
             } else if (arr[j] == pivot){
                 mid = mid+1;
-                HelperFunctions.swap(mid, j, arr);
+                swap(mid, j, arr);
             }
         }
 
         mid = mid+1;
-        HelperFunctions.swap(mid,end,arr);
+        swap(mid,end,arr);
         this.partStart = i+1;
         this.partEnd = mid;
     }

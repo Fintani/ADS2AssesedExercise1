@@ -1,4 +1,4 @@
-public class ShellSort implements SortAlg{
+public class ShellSort extends SortAlg{
 
     public int[] sort(int[] arr){
         int length = arr.length;

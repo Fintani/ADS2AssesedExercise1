@@ -1,4 +1,4 @@
-public class BottomUpMerge implements SortAlg{
+public class BottomUpMerge extends MergeSuper{
     
     public int[] sort(int[] arr){
         int length = arr.length;
@@ -8,7 +8,7 @@ public class BottomUpMerge implements SortAlg{
             for(int start=0;start<arrEnd;start=start+size*2){
                 int mid = Math.min(start+size-1,arrEnd);
                 int end = Math.min(start+(size*2)-1, arrEnd);
-                HelperFunctions.merge(start, mid, end, arr);
+                merge(start, mid, end, arr);
             }
         }
 

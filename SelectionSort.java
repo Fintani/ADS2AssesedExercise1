@@ -1,11 +1,11 @@
-public class SelectionSort implements SortAlg{
+public class SelectionSort extends SortAlg{
 
     public int[] sort(int[] arr){
         int length = arr.length;
 
         for(int i=0; i<length-1; i++){
             int minIndex = findMin(i+1, length, arr, i);
-            HelperFunctions.swap(i, minIndex, arr);
+            swap(i, minIndex, arr);
         }
 
         return arr;

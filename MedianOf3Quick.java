@@ -1,4 +1,4 @@
-public class MedianOf3Quick implements SortAlg{
+public class MedianOf3Quick extends QuickSuper{
     
     public int[] sort(int[] arr){
         int start = 0;
@@ -11,27 +11,22 @@ public class MedianOf3Quick implements SortAlg{
 
     public void quickSort(int start, int end, int[] arr){
         if(start < end){
-            int part = HelperFunctions.partition(start, end, arr);
+            int pivot = medianPivot(start, end, arr);
+            int part = partition(pivot, start, end, arr);
             quickSort(start, part-1, arr);
             quickSort(part+1, end, arr);
         }
     }
 
-    public int medianPartition(int start, int end, int arr[]){
-        int mid = (start-end)/2;
-        int[] partitions = {arr[start], arr[mid], arr[end]};
-        int max = 0;
-        int min = 0;
-        int median = 0;
-        for(int i=1;i<partitions.length;i++){
-            if(partitions[i] < min){
-                min = i;
-            } else if(partitions[i] > max){
-                max = i;
-            } else {
-                median = i;
-            }
+    public int medianPivot(int start, int end, int arr[]){
+        int mid = start+(end-start)/2;
+        
+        if((arr[start]<=arr[mid] && arr[mid]<=arr[end]) || (arr[end]<=arr[mid] && arr[mid]<=arr[start])){
+            return mid;
+        } else if((arr[start]<=arr[end] && arr[end]<=arr[mid]) || (arr[mid]<=arr[end] && arr[end]<=arr[start])){
+            return end;
+        } else {
+            return start;
         }
-        return median;
     }
 }
