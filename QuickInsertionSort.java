@@ -11,7 +11,7 @@ public class QuickInsertionSort extends QuickSuper{
 
     public void quickSort(int start, int end, int[] arr){
         if(start<end && (end-start+1)>11){
-            int pivot = arr[end];
+            int pivot = end;
             int part = partition(pivot, start, end, arr);
             quickSort(start, part-1, arr);
             quickSort(part+1, end, arr);

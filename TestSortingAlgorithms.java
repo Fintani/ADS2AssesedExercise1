@@ -1,4 +1,8 @@
-public class TestSortingAlgorithms {
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+public class TestSortingAlgorithms extends Thread{
 
     public static void printArray(int[] arr){
         String str = "";
@@ -28,8 +32,68 @@ public class TestSortingAlgorithms {
         return true;
     }
 
+    public static int countFileLines(File file) throws FileNotFoundException{
+        int lines = 0;
+        Scanner reader = new Scanner(file);
+        while(reader.hasNextLine()){
+            if(reader.nextLine() != null){
+                lines = lines+1;
+            }
+        }
+        reader.close();
+        return lines;
+    }
+
+    public static int[] fileToArray(String file) throws FileNotFoundException{
+        File arrayFile = new File(file);
+        int[] arr = new int[countFileLines(arrayFile)];
+        int i = 0;
+        Scanner reader = new Scanner(arrayFile);
+        while(reader.hasNextLine()){
+            int num = Integer.valueOf(reader.nextLine());
+            arr[i] = num;
+            i = i+1;
+        }
+        reader.close();
+
+        return arr;
+    }
+
+    public static long timeAlg(String file, SortAlg alg){
+        try{
+            int[] arr = fileToArray(file);
+            long startTime = System.nanoTime();
+            alg.sort(arr);
+            long endTime = System.nanoTime();
+            long duration = (endTime-startTime);
+            System.out.println(file+" sorted in: "+duration+"ns");
+            return duration;
+        } catch(Exception exception){
+            System.out.println(exception);
+            return 0;
+        }
+    }
+    
+    public void run(){
+        long total = 0;
+        for(int i=0;i<10;i++){
+            total = total + timeAlg("Data/bad.txt", new QuickInsertionSort());
+        }
+        System.out.println("Average: "+((total/10)/1000000)+"ms \n"
+                            +"or "+(total/10)+"ns");
+    }
     public static void main(String[] args) {
-        int[] arr = {1,4,6,2,3,3,0,4,3,1,3};
-        checkSort(arr, new QuickSort());
+        try{
+            TestSortingAlgorithms t = new TestSortingAlgorithms();
+            t.start();
+            t.join(30000);
+
+            if(t.isAlive()){
+                System.out.println("Over 300 seconds, DNF");
+                t.interrupt();
+            }
+        } catch (Exception exception){
+            System.out.println(exception);
+        }
     }
 }
