@@ -75,12 +75,7 @@ public class TestSortingAlgorithms extends Thread{
     }
     
     public void run(){
-        long total = 0;
-        for(int i=0;i<10;i++){
-            total = total + timeAlg("Data/bad.txt", new QuickInsertionSort());
-        }
-        System.out.println("Average: "+((total/10)/1000000)+"ms \n"
-                            +"or "+(total/10)+"ns");
+        timeAlg("Data/bad.txt", new QuickInsertionSort());
     }
     public static void main(String[] args) {
         try{
